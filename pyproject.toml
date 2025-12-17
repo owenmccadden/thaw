@@ -1,0 +1,35 @@
+[project]
+name = "thaw"
+version = "0.1.0"
+description = "An open source tool for optimizing AWS Lambda"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "boto3>=1.34",
+    "click>=8.1",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "moto>=5.0",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+thaw = "thaw.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/thaw"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
